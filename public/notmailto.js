@@ -4,17 +4,24 @@
     twitter: {
       domain: 'twitte.r',
       jumpto: 'http://twitter.com/'
+    },
+    geo: {
+      domain: 'ge.o',
+      jumpto: 'http://www.google.co.jp/maps?q=',
+      before: function(x) {
+        return x.replace('-', ',');
+      }
     }
   };
   $.notmailto = {
     rules: rules
   };
   $(function() {
-    var domain, id, l, ld, local, mailto, rs, rule, x, _results;
+    var domain, id, l, lc, ld, local, mailto, rs, rule, x, _ref, _results;
     l = location;
     mailto = decodeURIComponent(l.search).split(':')[1];
     if (mailto) {
-      if (mailto.match(/^[\w\.-@]+$/)) {
+      if (mailto.match(/^[\w\.\-@]+$/)) {
         ld = mailto.split('@');
         local = ld[0];
         domain = ld[1];
@@ -23,7 +30,8 @@
         for (id in rs) {
           rule = rs[id];
           if (domain === rule.domain) {
-            l.href = rule.jumpto + local;
+            lc = (_ref = typeof rule.before === "function" ? rule.before(local) : void 0) != null ? _ref : local;
+            l.href = rule.jumpto + lc;
             break;
           }
         }
