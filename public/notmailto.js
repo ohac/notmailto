@@ -6,8 +6,11 @@
       jumpto: 'http://twitter.com/'
     }
   };
+  $.notmailto = {
+    rules: rules
+  };
   $(function() {
-    var domain, id, l, ld, local, mailto, rule, x, _results;
+    var domain, id, l, ld, local, mailto, rs, rule, x, _results;
     l = location;
     mailto = decodeURIComponent(l.search).split(':')[1];
     if (mailto) {
@@ -15,9 +18,10 @@
         ld = mailto.split('@');
         local = ld[0];
         domain = ld[1];
+        rs = $.notmailto.rules;
         _results = [];
-        for (id in rules) {
-          rule = rules[id];
+        for (id in rs) {
+          rule = rs[id];
           if (domain === rule.domain) {
             l.href = rule.jumpto + local;
             break;
