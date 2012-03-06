@@ -11,6 +11,22 @@
       before: function(x) {
         return x.replace('-', ',');
       }
+    },
+    github: {
+      domain: 'githu.b',
+      jumpto: 'https://github.com/'
+    },
+    htn: {
+      domain: 'htn.to',
+      jumpto: 'http://htn.to/'
+    },
+    yubin: {
+      domain: 'yubi.n',
+      jumpto: 'http://www.post.japanpost.jp/cgi-zip/zipcode.php?zip='
+    },
+    mixi: {
+      domain: 'mix.i',
+      jumpto: 'http://mixi.jp/show_friend.pl?id='
     }
   };
   $.notmailto = {
