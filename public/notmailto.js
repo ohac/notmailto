@@ -27,6 +27,15 @@
     mixi: {
       domain: 'mix.i',
       jumpto: 'http://mixi.jp/show_friend.pl?id='
+    },
+    text: {
+      domain: 'tex.t',
+      jumpto: 'data:text/plain;base64,',
+      before: function(x) {
+        var y;
+        y = x + '===';
+        return y.substring(0, parseInt(y.length / 4) * 4);
+      }
     }
   };
   $.notmailto = {
