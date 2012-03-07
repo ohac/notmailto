@@ -36,6 +36,10 @@
         y = x + '===';
         return y.substring(0, parseInt(y.length / 4) * 4);
       }
+    },
+    btih: {
+      domain: 'bti.h',
+      jumpto: 'magnet:?xt=urn:btih:'
     }
   };
   $.notmailto = {
