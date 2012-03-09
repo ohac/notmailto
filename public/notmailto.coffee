@@ -12,6 +12,9 @@ rules =
   htn:
     domain: 'htn.to'
     jumpto: 'http://htn.to/'
+  tco:
+    domain: 't.co'
+    jumpto: 'http://t.co/'
   yubin:
     domain: 'yubi.n'
     jumpto: 'http://www.post.japanpost.jp/cgi-zip/zipcode.php?zip='
