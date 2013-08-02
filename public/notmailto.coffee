@@ -35,7 +35,7 @@ rules =
     jumpto: 'https://mail.google.com/mail/?view=cm&fs=1&tf=1&source=mailto&to='
     before: (x, y) -> x + '@' + y
   yahoofinance:
-    domain: 'ka.bu'
+    domain: 'kab.u'
     jumpto: 'http://stocks.finance.yahoo.co.jp/stocks/detail/?code='
 
 $.notmailto =

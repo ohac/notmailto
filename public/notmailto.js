@@ -54,7 +54,7 @@
       }
     },
     yahoofinance: {
-      domain: 'ka.bu',
+      domain: 'kab.u',
       jumpto: 'http://stocks.finance.yahoo.co.jp/stocks/detail/?code='
     }
   };
