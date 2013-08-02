@@ -30,6 +30,13 @@ rules =
   btih:
     domain: 'bti.h'
     jumpto: 'magnet:?xt=urn:btih:'
+  gmail:
+    domain: 'gmail.com'
+    jumpto: 'https://mail.google.com/mail/?view=cm&fs=1&tf=1&source=mailto&to='
+    before: (x, y) -> x + '@' + y
+  yahoofinance:
+    domain: 'ka.bu'
+    jumpto: 'http://stocks.finance.yahoo.co.jp/stocks/detail/?code='
 
 $.notmailto =
   rules: rules
@@ -45,8 +52,10 @@ $ ->
       rs = $.notmailto.rules
       for id, rule of rs
         if domain == rule.domain
-          lc = rule.before?(local) ? local
-          l.href = rule.jumpto + lc
+          lc = rule.before?(local, domain) ? local
+          href = rule.jumpto + lc
+          l.href = href
+          $('#result').html('<a href="' + href + '">' + href + '</a>')
           break
   else
     x = l.protocol + '//' + l.host + l.pathname + '?q=%s'

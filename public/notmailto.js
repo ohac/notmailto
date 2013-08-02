@@ -1,5 +1,6 @@
 (function() {
   var rules;
+
   rules = {
     twitter: {
       domain: 'twitte.r',
@@ -44,13 +45,26 @@
     btih: {
       domain: 'bti.h',
       jumpto: 'magnet:?xt=urn:btih:'
+    },
+    gmail: {
+      domain: 'gmail.com',
+      jumpto: 'https://mail.google.com/mail/?view=cm&fs=1&tf=1&source=mailto&to=',
+      before: function(x, y) {
+        return x + '@' + y;
+      }
+    },
+    yahoofinance: {
+      domain: 'ka.bu',
+      jumpto: 'http://stocks.finance.yahoo.co.jp/stocks/detail/?code='
     }
   };
+
   $.notmailto = {
     rules: rules
   };
+
   $(function() {
-    var domain, id, l, lc, ld, local, mailto, rs, rule, x, _ref, _results;
+    var domain, href, id, l, lc, ld, local, mailto, rs, rule, x, _ref, _results;
     l = location;
     mailto = decodeURIComponent(l.search).split(':')[1];
     if (mailto) {
@@ -63,9 +77,13 @@
         for (id in rs) {
           rule = rs[id];
           if (domain === rule.domain) {
-            lc = (_ref = typeof rule.before === "function" ? rule.before(local) : void 0) != null ? _ref : local;
-            l.href = rule.jumpto + lc;
+            lc = (_ref = typeof rule.before === "function" ? rule.before(local, domain) : void 0) != null ? _ref : local;
+            href = rule.jumpto + lc;
+            l.href = href;
+            $('#result').html('<a href="' + href + '">' + href + '</a>');
             break;
+          } else {
+            _results.push(void 0);
           }
         }
         return _results;
@@ -75,4 +93,5 @@
       return navigator.registerProtocolHandler('mailto', x, 'NotMailTo');
     }
   });
+
 }).call(this);
