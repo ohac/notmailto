@@ -1,5 +1,6 @@
 (function() {
   var rules;
+
   rules = {
     twitter: {
       domain: 'twitte.r',
@@ -44,11 +45,25 @@
     btih: {
       domain: 'bti.h',
       jumpto: 'magnet:?xt=urn:btih:'
+    },
+    sakuracoin: {
+      domain: 'sk.r',
+      jumpto: 'sakuracoin:'
+    },
+    sha1coin: {
+      domain: 'sh.a',
+      jumpto: 'sha1coin:'
+    },
+    monacoin: {
+      domain: 'mon.a',
+      jumpto: 'monacoin:'
     }
   };
+
   $.notmailto = {
     rules: rules
   };
+
   $(function() {
     var domain, id, l, lc, ld, local, mailto, rs, rule, x, _ref, _results;
     l = location;
@@ -66,6 +81,8 @@
             lc = (_ref = typeof rule.before === "function" ? rule.before(local) : void 0) != null ? _ref : local;
             l.href = rule.jumpto + lc;
             break;
+          } else {
+            _results.push(void 0);
           }
         }
         return _results;
@@ -75,4 +92,5 @@
       return navigator.registerProtocolHandler('mailto', x, 'NotMailTo');
     }
   });
+
 }).call(this);

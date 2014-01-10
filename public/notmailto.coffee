@@ -30,6 +30,15 @@ rules =
   btih:
     domain: 'bti.h'
     jumpto: 'magnet:?xt=urn:btih:'
+  sakuracoin:
+    domain: 'sk.r'
+    jumpto: 'sakuracoin:'
+  sha1coin:
+    domain: 'sh.a'
+    jumpto: 'sha1coin:'
+  monacoin:
+    domain: 'mon.a'
+    jumpto: 'monacoin:'
 
 $.notmailto =
   rules: rules
